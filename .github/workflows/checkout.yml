@@ -1,4 +1,3 @@
-name: Dart Checkout Push
 on: push
 name: build and test app
 jobs:
