@@ -28,15 +28,12 @@ jobs:
         java-version: '12.x'
 
     - run: flutter pub get
-      working-directory: best_flutter_ui_templates
     # - run: flutter test
 
     - name: build APK
       run: flutter build apk
-      working-directory: best_flutter_ui_templates
 
     - name: upload APK
       uses: actions/upload-artifact@v1
       with:
-        name: apk
-        path: best_flutter_ui_templates/build/app/outputs/apk/release/app-release.apk    
+        name: apk  
