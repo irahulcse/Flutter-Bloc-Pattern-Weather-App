@@ -48,6 +48,7 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
   WeatherBloc(this.weatherRepo);
   @override
   // TODO: implement initialState
+  //TODO: looking to the number of the bloc pattern switches
   WeatherState get initialState => WeatherIsNotSearched();
 
   @override
