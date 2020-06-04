@@ -110,6 +110,7 @@ class SearchPage extends StatelessWidget {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10))),
                         onPressed: () {
+                          weatherBloc.add(FetchWeather(cityController.text));
                           // weatherBloc.add(FetchWeather(cityController.text));
                         },
                         color: Colors.lightBlue,
