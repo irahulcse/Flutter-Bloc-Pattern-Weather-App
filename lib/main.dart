@@ -128,7 +128,7 @@ class SearchPage extends StatelessWidget {
                 child: CircularProgressIndicator(),
               );
             } else if (state is WeatherIsLoaded) {
-              return ShowWeather(state.getWeather, "Begusarai");
+              return ShowWeather(state.getWeather, cityController.text);
             }
             return Text("Errror");
           },
