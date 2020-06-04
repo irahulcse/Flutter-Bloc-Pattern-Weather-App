@@ -31,7 +31,7 @@ jobs:
     # - run: flutter test
 
     - name: build APK
-      run: flutter build apk
+      run: flutter build appbundle --target-platform android-arm,android-arm64,android-x64
 
     - name: upload APK
       uses: actions/upload-artifact@v1
