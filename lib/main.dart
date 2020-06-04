@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
 class SearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final weatherBloc = BlocProvider.of<WeatherBloc>(context);
     // final weatherBloc = BlocProvider.of<WeatherBloc>(context);
     var cityController = TextEditingController();
 
@@ -46,75 +47,91 @@ class SearchPage extends StatelessWidget {
             width: 300,
           ),
         ),
-        Container(
-            padding: EdgeInsets.only(
-              left: 32,
-              right: 32,
-            ),
-            child: Column(
-              children: <Widget>[
-                Text(
-                  "Search Weather",
-                  style: TextStyle(
-                      fontSize: 40,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black),
+        BlocBuilder<WeatherBloc, WeatherState>(
+          builder: (context, state) {
+            if (state is WeatherIsNotSearched) {
+              return Container(
+                padding: EdgeInsets.only(
+                  left: 32,
+                  right: 32,
                 ),
-                Text(
-                  "Instanly",
-                  style: TextStyle(
-                    fontSize: 40,
-                    fontWeight: FontWeight.w200,
-                    color: Colors.redAccent,
-                  ),
-                ),
-                SizedBox(
-                  height: 24,
-                ),
-                TextFormField(
-                  controller: cityController,
-                  decoration: InputDecoration(
-                    prefixIcon: Icon(
-                      Icons.search,
-                      color: Colors.black87,
+                child: Column(
+                  children: <Widget>[
+                    Text(
+                      "Search Weather",
+                      style: TextStyle(
+                          fontSize: 40,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black),
                     ),
-                    enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                        borderSide: BorderSide(
-                            color: Colors.purple, style: BorderStyle.solid)),
-                    focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                        borderSide: BorderSide(
-                            color: Colors.blue, style: BorderStyle.solid)),
-                    hintText: "City Name",
-                    hintStyle: TextStyle(color: Colors.black38),
-                  ),
-                  style: TextStyle(
-                    color: Colors.black45,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  width: double.infinity,
-                  height: 50,
-                  child: FlatButton(
-                    shape: new RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
-                    onPressed: () {
-                      // weatherBloc.add(FetchWeather(cityController.text));
-                    },
-                    color: Colors.lightBlue,
-                    child: Text(
-                      "Search",
-                      style: TextStyle(color: Colors.white70, fontSize: 16),
+                    Text(
+                      "Instanly",
+                      style: TextStyle(
+                        fontSize: 40,
+                        fontWeight: FontWeight.w200,
+                        color: Colors.redAccent,
+                      ),
                     ),
-                  ),
+                    SizedBox(
+                      height: 24,
+                    ),
+                    TextFormField(
+                      controller: cityController,
+                      decoration: InputDecoration(
+                        prefixIcon: Icon(
+                          Icons.search,
+                          color: Colors.black87,
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide: BorderSide(
+                                color: Colors.purple,
+                                style: BorderStyle.solid)),
+                        focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide: BorderSide(
+                                color: Colors.blue, style: BorderStyle.solid)),
+                        hintText: "City Name",
+                        hintStyle: TextStyle(color: Colors.black38),
+                      ),
+                      style: TextStyle(
+                        color: Colors.black45,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      width: double.infinity,
+                      height: 50,
+                      child: FlatButton(
+                        shape: new RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10))),
+                        onPressed: () {
+                          // weatherBloc.add(FetchWeather(cityController.text));
+                        },
+                        color: Colors.lightBlue,
+                        child: Text(
+                          "Search",
+                          style: TextStyle(color: Colors.white70, fontSize: 16),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            )),
+              );
+            } else if (state is WeatherIsLoading) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            } else if (state is WeatherIsLoaded) {
+              return ShowWeather(state.getWeather, "Begusarai");
+            }
+            return Text("Errror");
+          },
+        ),
       ],
     );
   }

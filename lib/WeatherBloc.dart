@@ -33,6 +33,8 @@ class WeatherIsLoaded extends WeatherState {
   final _weather;
 
   WeatherIsLoaded(this._weather);
+
+  WeatherModel get getWeather => _weather;
   @override
   // TODO: implement props
   List<Object> get props => [_weather];
