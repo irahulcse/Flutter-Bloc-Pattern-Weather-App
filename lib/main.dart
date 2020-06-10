@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_pattern_weather_app/WeatherBloc.dart';
 import 'package:flutter_bloc_pattern_weather_app/WeatherModel.dart';
 import 'package:flutter_bloc_pattern_weather_app/WeatherRepo.dart';
+
 //
 void main() => runApp(MyApp());
 
@@ -19,7 +20,9 @@ class MyApp extends StatelessWidget {
           resizeToAvoidBottomInset: false,
           backgroundColor: Colors.grey[900],
           body: BlocProvider(
-            create: (context) => WeatherBloc(WeatherRepo()),
+            create: (context) => WeatherBloc(
+              WeatherRepo(),
+            ),
             child: SearchPage(),
           ),
         ));
@@ -86,14 +89,19 @@ class SearchPage extends StatelessWidget {
                           color: Colors.white,
                         ),
                         enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(10),
+                            ),
                             borderSide: BorderSide(
                                 color: Colors.purple,
                                 style: BorderStyle.solid)),
                         focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide: BorderSide(
-                                color: Colors.blue, style: BorderStyle.solid)),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(10),
+                          ),
+                          borderSide: BorderSide(
+                              color: Colors.blue, style: BorderStyle.solid),
+                        ),
                         hintText: "City Name",
                         hintStyle: TextStyle(color: Colors.white38),
                       ),
@@ -110,10 +118,14 @@ class SearchPage extends StatelessWidget {
                       height: 50,
                       child: FlatButton(
                         shape: new RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(10))),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(10),
+                          ),
+                        ),
                         onPressed: () {
-                          weatherBloc.add(FetchWeather(cityController.text));
+                          weatherBloc.add(
+                            FetchWeather(cityController.text),
+                          );
                           // weatherBloc.add(FetchWeather(cityController.text));
                         },
                         color: Colors.lightBlue,
@@ -208,9 +220,14 @@ class ShowWeather extends StatelessWidget {
               height: 50,
               child: FlatButton(
                 shape: new RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(10),
+                  ),
+                ),
                 onPressed: () {
-                  BlocProvider.of<WeatherBloc>(context).add(ResetWeather());
+                  BlocProvider.of<WeatherBloc>(context).add(
+                    ResetWeather(),
+                  );
                 },
                 color: Colors.lightBlue,
                 child: Text(
@@ -223,3 +240,5 @@ class ShowWeather extends StatelessWidget {
         ));
   }
 }
+
+//A
