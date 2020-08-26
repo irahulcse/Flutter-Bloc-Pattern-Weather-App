@@ -1,5 +1,5 @@
 ![Image](images/rovers.jpg)
-# Flutter :boom:
+# Flutter Bloc Pattern Weather Application:boom:
 
 
 
@@ -9,12 +9,12 @@ If you had like the project pls hit the star :+1: icon.
 
 The Parent Repository of this project can be found on this [link](https://github.com/irahulcse/A-Complete-Guide-To-Flutter).
 
-### Screenshots and Working GIFS:
+<!-- ### Screenshots and Working GIFS:
 
 <img src="images/rovers.gif" height="300em"  width="250em"/> <img src="images/1.jpg" height="300em" width="250em"/> <img src="images/2.jpg" height="300em" width="250em"/>
 
 
- Sorry for the quality of the GIF :pray:
+ Sorry for the quality of the GIF :pray: -->
 
 ### Created with :heart:
 I am Rahul Chandra, A a Pre-Final Year Computer Science Student, an experienced Software Developer with a demonstrated history of working in the information technology and services industry. Seasoned Competitive Coder. Skilled in C++, Python, Data Analysis, Java, Dart and Julia. Strong information technology professional with a Bachelor of Engineering - BE focused in Computer Science from Chandigarh University. 
